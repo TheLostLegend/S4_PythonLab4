@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>Нет аккаунта? <a href="{% url 'registration' %}">Зарегестрироваться</a></p>
+            {{ form.errors }}
+            <input class="btn btn-outline-primary" type="submit" value="Войти"/>
+        </form>
+    </div>
+{% endblock %}

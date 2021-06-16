@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+<h1>Личные записи</h1>
+{% if tasks  %}
+{% for el in tasks %}
+<div class="alert alert-warning mt-2">
+    <h3>{{ el.title }}</h3>
+    <p>{{ el.text }}</p>
+    <p>Создано: {{ el.created}} // Изменено: {{ el.modified}}</p>
+    <form method="post" action="{% url 'delete' %}">
+        {% csrf_token %}
+        <input type="hidden"value={{ el.id }} name="id"/>
+        <button class="btn btn-danger"type="submit">Удалить</button>
+    </form>
+</div>
+{% endfor %}
+{% else %}
+<p>У нас нет записей!</p>
+{% endif %}
+{% endblock %}

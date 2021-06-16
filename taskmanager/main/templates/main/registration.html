@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+    <div class="registration">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>Уже есть аккаунт? <a href="{% url 'login' %}">Вход</a></p>
+            {{ form.errors }}
+            <input class="btn btn-outline-primary" type="submit" value="Зарегестрироваться"/>
+        </form>
+    </div>
+{% endblock %}
