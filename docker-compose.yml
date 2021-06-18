@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   web:
+    image: thelostlegend13/pynt_web:v1.0
     build: ./taskmanager
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
